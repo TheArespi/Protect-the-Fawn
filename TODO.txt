@@ -19,9 +19,9 @@ PROTECT THE FAWN TASKS
 	[ ] Scared Behavior
 [ ] Implement Wolf Object
 	[X] Animated Sprites - 20231102
-	[ ] Pathfinding
-		[ ] Setup PathfindingAgent
-		[ ] Set the fawn as target of wolf
+	[X] Pathfinding - 20231102 
+		[X] Setup PathfindingAgent - 20231102
+		[X] Set the fawn as target of wolf - 20231102
 	[ ] Health
 	[ ] Clickable to kill
 [ ] Implement Day / Night Cycle

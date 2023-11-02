@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://6vgv113qh7s5"]
+[gd_scene load_steps=13 format=3 uid="uid://6vgv113qh7s5"]
 
 [ext_resource type="Texture2D" uid="uid://c6wuf5jmdhj43" path="res://Sprites/fawn-wolf-spritesheet.png" id="1_teexy"]
+[ext_resource type="Script" path="res://Scenes/Entities/Wolf/wolf.gd" id="1_ux1du"]
+[ext_resource type="PackedScene" uid="uid://bjgm1j5eeb4sv" path="res://Scenes/Components/PathfindingAgent/pathfinding_agent.tscn" id="3_bffpw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjs2i"]
 load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a14d6a35cb6993.ctex"
@@ -68,9 +70,14 @@ animations = [{
 }]
 
 [node name="Wolf" type="Node2D"]
+script = ExtResource("1_ux1du")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_j4s5l")
 animation = &"Wolf_IDLE"
 speed_scale = 2.0
+
+[node name="PathfindingAgent" parent="." instance=ExtResource("3_bffpw")]
+
+[connection signal="agent_moving" from="PathfindingAgent" to="." method="_on_pathfinding_agent_agent_moving"]

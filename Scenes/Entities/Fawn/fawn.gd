@@ -15,6 +15,12 @@ func _input(event):
 	$PathfindingAgent.move_to(get_global_mouse_position())
 
 func _on_pathfinding_agent_agent_moving(is_moving: bool, facing_right: bool):
+	if moving != is_moving:
+		GlobalSignals.fawn_movement_update.emit(is_moving)
+
+	if not is_moving:
+		GlobalSignals.fawn_location_update.emit(global_position)
+
 	moving = is_moving
 
 	if is_moving:

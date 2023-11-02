@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Constants="*res://Scenes/Scripts/Constants.gd"
 Util="*res://Scenes/Scripts/Util.gd"
+GlobalSignals="*res://Scenes/Scripts/global_signals.gd"
 
 [display]
 
