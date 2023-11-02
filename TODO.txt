@@ -1,17 +1,22 @@
 PROTECT THE FAWN TASKS
 
 [ ] Finish Mock up
-	[X] Fawn Sprites
+	[ ] Fawn Sprites
+		[X] Walking Spritesheet - 20231101
+		[ ] Sleeping Sprite
+		[ ] IDLE eating grass Sprite
 	[ ] Wolf Sprites
+		[X] Walking Spritesheet - 20231102
+		[ ] Eating Spritesheet
 	[ ] Basic Forrest Tileset
 [ ] Implement Fawn Object
-	[ ] Animated Sprites
+	[X] Animated Sprites - 20231102
 	[ ] Pathfinding
 	[ ] Health / Hunger
 	[ ] Sleeping Behavior
 	[ ] Scared Behavior
 [ ] Implement Wolf Object
-	[ ] Animated Sprites
+	[X] Animated Sprites - 20231102
 	[ ] Pathfinding
 	[ ] Health
 	[ ] Clickable to kill
@@ -24,4 +29,4 @@ PROTECT THE FAWN TASKS
 	[ ] Bullets kill monsters
 [ ] Implement Defense Object Placing
 [ ] Implement currency
-[ ] Finish MVP
+[ ] Finish 0.1.0 MVP
