@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://nen1dnersocy"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjs2i"]
+load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a14d6a35cb6993.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5afg"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncn8p"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfh0c"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcy2w"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjdmh"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_041fg"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8152g"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyj0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5afg")
+}],
+"loop": true,
+"name": &"Fawn_IDLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncn8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfh0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcy2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjdmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_041fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8152g")
+}],
+"loop": true,
+"name": &"Fawn_Walking",
+"speed": 5.0
+}]
+
+[node name="Fawn" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jyj0v")
+animation = &"Fawn_IDLE"
+frame_progress = 0.72959
+speed_scale = 2.0

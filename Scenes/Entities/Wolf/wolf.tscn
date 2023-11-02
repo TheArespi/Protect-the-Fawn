@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://6vgv113qh7s5"]
+
+[ext_resource type="Texture2D" uid="uid://c6wuf5jmdhj43" path="res://Sprites/fawn-wolf-spritesheet.png" id="1_teexy"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjs2i"]
+load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a14d6a35cb6993.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcw1j"]
+atlas = SubResource("CompressedTexture2D_tjs2i")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdkb7"]
+atlas = ExtResource("1_teexy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bws3c"]
+atlas = ExtResource("1_teexy")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in0a6"]
+atlas = ExtResource("1_teexy")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkkj6"]
+atlas = ExtResource("1_teexy")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xngs0"]
+atlas = ExtResource("1_teexy")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0tx0"]
+atlas = ExtResource("1_teexy")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4s5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcw1j")
+}],
+"loop": true,
+"name": &"Wolf_IDLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdkb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bws3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in0a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkkj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xngs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0tx0")
+}],
+"loop": true,
+"name": &"Wolf_Walking",
+"speed": 5.0
+}]
+
+[node name="Wolf" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_j4s5l")
+animation = &"Wolf_IDLE"
+speed_scale = 2.0

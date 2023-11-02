@@ -1,0 +1,27 @@
+PROTECT THE FAWN TASKS
+
+[ ] Finish Mock up
+	[X] Fawn Sprites
+	[ ] Wolf Sprites
+	[ ] Basic Forrest Tileset
+[ ] Implement Fawn Object
+	[ ] Animated Sprites
+	[ ] Pathfinding
+	[ ] Health / Hunger
+	[ ] Sleeping Behavior
+	[ ] Scared Behavior
+[ ] Implement Wolf Object
+	[ ] Animated Sprites
+	[ ] Pathfinding
+	[ ] Health
+	[ ] Clickable to kill
+[ ] Implement Day / Night Cycle
+[ ] Implement Wolf Spawners
+[ ] Implement Monster Shooter Object
+	[ ] Animated Sprites
+	[ ] Field of Attack
+	[ ] Bullets
+	[ ] Bullets kill monsters
+[ ] Implement Defense Object Placing
+[ ] Implement currency
+[ ] Finish MVP
