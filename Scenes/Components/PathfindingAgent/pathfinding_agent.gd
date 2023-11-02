@@ -1,6 +1,5 @@
 extends Node2D
 
-var target_position: Vector2
 var tilemap: TileMap
 var path = [] 
 
@@ -12,16 +11,13 @@ signal agent_moving(is_moving: bool, facing_right: bool)
 func _ready():
 	pass
 
-func _input(event):
-	if event.is_action_pressed("mouse_click") == false or moving:
+func move_to(target_position: Vector2):
+	if moving:
 		return
-
-	print("Player Position: ", get_owner().global_position, " local_to_map: ", tilemap.local_to_map(get_owner().global_position))
-	print("Mouse Position: ", get_owner().get_global_mouse_position(), " local_to_map: ", tilemap.local_to_map(get_owner().get_global_mouse_position()))
 
 	path = Constants.astar_grid.get_id_path(
 			tilemap.local_to_map(get_owner().global_position),
-			tilemap.local_to_map(get_owner().get_global_mouse_position()))
+			tilemap.local_to_map(target_position))
 
 	moving = true
 
