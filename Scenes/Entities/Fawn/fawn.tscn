@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://nen1dnersocy"]
+[gd_scene load_steps=11 format=3 uid="uid://nen1dnersocy"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Fawn/fawn.gd" id="1_2ero7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjs2i"]
 load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a14d6a35cb6993.ctex"
@@ -66,10 +68,11 @@ animations = [{
 }]
 
 [node name="Fawn" type="Node2D"]
+script = ExtResource("1_2ero7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jyj0v")
 animation = &"Fawn_IDLE"
-frame_progress = 0.72959
+frame_progress = 0.793639
 speed_scale = 2.0
