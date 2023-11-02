@@ -79,3 +79,5 @@ frame_progress = 0.999997
 speed_scale = 2.0
 
 [node name="PathfindingAgent" parent="." instance=ExtResource("2_417qe")]
+
+[connection signal="agent_moving" from="PathfindingAgent" to="." method="_on_pathfinding_agent_agent_moving"]
