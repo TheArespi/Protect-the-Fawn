@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjgm1j5eeb4sv"]
+
+[ext_resource type="Script" path="res://Scenes/Components/PathfindingAgent/pathfinding_agent.gd" id="1_3jy6t"]
+
+[node name="PathfindingAgent" type="Node2D"]
+script = ExtResource("1_3jy6t")

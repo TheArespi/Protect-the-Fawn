@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://nen1dnersocy"]
+[gd_scene load_steps=12 format=3 uid="uid://nen1dnersocy"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Fawn/fawn.gd" id="1_2ero7"]
+[ext_resource type="PackedScene" uid="uid://bjgm1j5eeb4sv" path="res://Scenes/Components/PathfindingAgent/pathfinding_agent.tscn" id="2_417qe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjs2i"]
 load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a14d6a35cb6993.ctex"
@@ -74,5 +75,7 @@ script = ExtResource("1_2ero7")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jyj0v")
 animation = &"Fawn_IDLE"
-frame_progress = 0.793639
+frame_progress = 0.999997
 speed_scale = 2.0
+
+[node name="PathfindingAgent" parent="." instance=ExtResource("2_417qe")]
