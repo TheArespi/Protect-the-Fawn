@@ -15,15 +15,17 @@ PROTECT THE FAWN TASKS
 		[X] Test PathfindingAgent with player click - 20231102
 		[X] Implement Fawn Object to set the target of PathfindingAgent - 20231102
 	[ ] Health / Hunger
-	[ ] Sleeping Behavior
-	[ ] Scared Behavior
+	[ ] Fawn Behavior
+		[X] Idle Behavior (Randomly select location to move to) - 20231103
+		[ ] Sleeping Behavior
+		[ ] Scared Behavior
 [ ] Implement Wolf Object
 	[X] Animated Sprites - 20231102
 	[X] Pathfinding - 20231102 
 		[X] Setup PathfindingAgent - 20231102
 		[X] Set the fawn as target of wolf - 20231102
 	[ ] Health
-	[ ] Clickable to kill
+	[X] Clickable to kill - 20231103
 [ ] Implement Day / Night Cycle
 [ ] Implement Wolf Spawners
 [ ] Implement Monster Shooter Object

@@ -10,18 +10,11 @@ func _ready():
 
 	move_to_random_area()
 
-func _input(event):
-	if event.is_action_pressed("mouse_click") == false or moving:
-		return
-
-	print("Fawn's new target: ", get_global_mouse_position())
-	$PathfindingAgent.move_to(get_global_mouse_position())
-
 func _on_pathfinding_agent_agent_moving(is_moving: bool, facing_right: bool):
 	print("agent moving: ", is_moving, "facing right: ", facing_right)
 	if moving != is_moving:
 		GlobalSignals.fawn_movement_update.emit(is_moving)
-		
+
 	if not is_moving:
 		GlobalSignals.fawn_location_update.emit(global_position)
 		$IDLETimer.start()

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b66ucwu4a2hbp"]
+
+[ext_resource type="Script" path="res://Scenes/Components/ClickToKill/click_to_kill.gd" id="1_gc1op"]
+
+[node name="ClickToKill" type="Node"]
+script = ExtResource("1_gc1op")

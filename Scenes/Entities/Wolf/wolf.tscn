@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://6vgv113qh7s5"]
+[gd_scene load_steps=15 format=3 uid="uid://6vgv113qh7s5"]
 
 [ext_resource type="Texture2D" uid="uid://c6wuf5jmdhj43" path="res://Sprites/fawn-wolf-spritesheet.png" id="1_teexy"]
 [ext_resource type="Script" path="res://Scenes/Entities/Wolf/wolf.gd" id="1_ux1du"]
 [ext_resource type="PackedScene" uid="uid://bjgm1j5eeb4sv" path="res://Scenes/Components/PathfindingAgent/pathfinding_agent.tscn" id="3_bffpw"]
+[ext_resource type="PackedScene" uid="uid://b66ucwu4a2hbp" path="res://Scenes/Components/ClickToKill/click_to_kill.tscn" id="4_jbx2x"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjs2i"]
 load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a14d6a35cb6993.ctex"
@@ -69,6 +70,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d654g"]
+size = Vector2(16, 12)
+
 [node name="Wolf" type="Node2D"]
 script = ExtResource("1_ux1du")
 
@@ -79,5 +83,14 @@ animation = &"Wolf_IDLE"
 speed_scale = 2.0
 
 [node name="PathfindingAgent" parent="." instance=ExtResource("3_bffpw")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_d654g")
+
+[node name="ClickToKill" parent="." node_paths=PackedStringArray("area_2d") instance=ExtResource("4_jbx2x")]
+area_2d = NodePath("../Area2D")
 
 [connection signal="agent_moving" from="PathfindingAgent" to="." method="_on_pathfinding_agent_agent_moving"]
