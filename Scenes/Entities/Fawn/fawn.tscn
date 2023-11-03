@@ -71,6 +71,8 @@ animations = [{
 [node name="Fawn" type="Node2D"]
 script = ExtResource("1_2ero7")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jyj0v")
@@ -80,4 +82,10 @@ speed_scale = 2.0
 
 [node name="PathfindingAgent" parent="." instance=ExtResource("2_417qe")]
 
+[node name="IDLETimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [connection signal="agent_moving" from="PathfindingAgent" to="." method="_on_pathfinding_agent_agent_moving"]
+[connection signal="timeout" from="IDLETimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="IDLETimer" to="." method="_on_idle_timer_timeout"]

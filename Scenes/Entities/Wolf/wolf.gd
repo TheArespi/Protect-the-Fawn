@@ -15,7 +15,7 @@ func _ready():
 
 func _process(_delta):
 	if fawn_moved_while_wolf_walking:
-		$PathfindingAgent.move_to(get_global_mouse_position())
+		$PathfindingAgent.move_to(current_fawn_location)
 		fawn_moved_while_wolf_walking = false
 	
 func _on_pathfinding_agent_agent_moving(is_moving: bool, facing_right: bool):
@@ -32,6 +32,7 @@ func _on_pathfinding_agent_agent_moving(is_moving: bool, facing_right: bool):
 		$AnimatedSprite2D.flip_h = true
 
 func fawn_location_changed(new_location: Vector2):
+	print("Fawn Location Changed")
 	current_fawn_location = new_location
 
 	if moving:

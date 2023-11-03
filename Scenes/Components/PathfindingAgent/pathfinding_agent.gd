@@ -19,21 +19,30 @@ func move_to(target_position: Vector2):
 
 	current_target = tilemap.local_to_map(target_position)
 
+	print("From ", tilemap.local_to_map(get_owner().global_position), " to ", current_target)
+
 	path = Constants.astar_grid.get_id_path(
 			tilemap.local_to_map(get_owner().global_position),
 			tilemap.local_to_map(target_position))
 
+	print(path)
+
 	moving = true
 
 	var current_point = path.pop_front()
-	set_agent_moving(current_point)
 
-	print(path)
+	if not current_point:
+		agent_moving.emit(false, is_facing_right)
+		return
+
+	set_agent_moving(current_point)
 
 func _process(_delta):
 	if path.is_empty():
+		if moving:
+			agent_moving.emit(false, is_facing_right)
+
 		moving = false
-		agent_moving.emit(false, is_facing_right)
 		return
 
 	var next_position = tilemap.map_to_local(path.front())
