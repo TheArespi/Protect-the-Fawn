@@ -8,12 +8,16 @@ var is_facing_right: bool = true
 
 signal agent_moving(is_moving: bool, facing_right: bool)
 
+var current_target: Vector2 = Vector2.ZERO
+
 func _ready():
 	pass
 
 func move_to(target_position: Vector2):
 	if moving:
 		return
+
+	current_target = tilemap.local_to_map(target_position)
 
 	path = Constants.astar_grid.get_id_path(
 			tilemap.local_to_map(get_owner().global_position),
@@ -34,7 +38,7 @@ func _process(_delta):
 
 	var next_position = tilemap.map_to_local(path.front())
 
-	get_owner().global_position = get_owner().global_position.move_toward(next_position, 1)
+	get_owner().global_position = get_owner().global_position.move_toward(next_position, 0.5)
 
 	if get_owner().global_position == next_position:
 		var current_point = path.pop_front()
@@ -43,7 +47,7 @@ func _process(_delta):
 			set_agent_moving(current_point)
 
 func set_agent_moving(current_point: Vector2):
-	if current_point.x != path.front().x:
-		is_facing_right = current_point.x < path.front().x
+	if current_point.x != current_target.x:
+		is_facing_right = current_point.x < current_target.x
 		
 	agent_moving.emit(true, is_facing_right)
