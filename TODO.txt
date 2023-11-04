@@ -17,7 +17,10 @@ PROTECT THE FAWN TASKS
 	[ ] Health / Hunger
 	[ ] Fawn Behavior
 		[X] Idle Behavior (Randomly select location to move to) - 20231103
-		[ ] Sleeping Behavior
+		[X] Create Fawn States - 20231104
+		[X] Sleeping Behavior - 20231104
+			[X] Create Sleeping Animation - 20231103
+			[X] Implement Sleeping with Fawn States - 20231104
 		[ ] Scared Behavior
 [ ] Implement Wolf Object
 	[X] Animated Sprites - 20231102

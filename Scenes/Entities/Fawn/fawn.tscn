@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://nen1dnersocy"]
+[gd_scene load_steps=26 format=3 uid="uid://nen1dnersocy"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Fawn/fawn.gd" id="1_2ero7"]
 [ext_resource type="PackedScene" uid="uid://bjgm1j5eeb4sv" path="res://Scenes/Components/PathfindingAgent/pathfinding_agent.tscn" id="2_417qe"]
+[ext_resource type="Texture2D" uid="uid://bryt58qg6si46" path="res://Sprites/fawn-sleeping-spritesheet-export.png" id="2_vi4ck"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjs2i"]
 load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a14d6a35cb6993.ctex"
@@ -9,6 +10,58 @@ load_path = "res://.godot/imported/fawn-wolf-spritesheet.png-b4654eeb17f62386f1a
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5afg"]
 atlas = SubResource("CompressedTexture2D_tjs2i")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0bem"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w5k4"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpyl3"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkc8x"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ou84"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74ca4"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxa81"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbops"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25xox"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfv7k"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rswjy"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn8mf"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omehs"]
+atlas = ExtResource("2_vi4ck")
+region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncn8p"]
 atlas = SubResource("CompressedTexture2D_tjs2i")
@@ -46,6 +99,60 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_h0bem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w5k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpyl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkc8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ou84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74ca4")
+}],
+"loop": false,
+"name": &"Fawn_Sitting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxa81")
+}],
+"loop": true,
+"name": &"Fawn_Sleeping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbops")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25xox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfv7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rswjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn8mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omehs")
+}],
+"loop": false,
+"name": &"Fawn_Standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ncn8p")
 }, {
 "duration": 1.0,
@@ -76,16 +183,21 @@ script = ExtResource("1_2ero7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jyj0v")
-animation = &"Fawn_IDLE"
-frame_progress = 0.999997
+animation = &"Fawn_Standing"
+frame = 5
+frame_progress = 1.0
 speed_scale = 2.0
 
 [node name="PathfindingAgent" parent="." instance=ExtResource("2_417qe")]
 
 [node name="IDLETimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
-autostart = true
+
+[node name="SleepTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
 
 [connection signal="agent_moving" from="PathfindingAgent" to="." method="_on_pathfinding_agent_agent_moving"]
-[connection signal="timeout" from="IDLETimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="IDLETimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
