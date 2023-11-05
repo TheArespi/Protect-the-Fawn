@@ -30,7 +30,7 @@ PROTECT THE FAWN TASKS
 	[ ] Health
 	[X] Clickable to kill - 20231103
 [ ] Implement Day / Night Cycle
-[ ] Implement Wolf Spawners
+[X] Implement Wolf Spawners - 20231105
 [ ] Implement Monster Shooter Object
 	[ ] Animated Sprites
 	[ ] Field of Attack
