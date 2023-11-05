@@ -1,6 +1,5 @@
 extends Node2D
 
-var tilemap: TileMap
 var path = [] 
 
 var moving: bool = false
@@ -17,13 +16,13 @@ func move_to(target_position: Vector2):
 	if moving:
 		return
 
-	current_target = tilemap.local_to_map(target_position)
+	current_target = Constants.tilemap.local_to_map(target_position)
 
-	print("From ", tilemap.local_to_map(get_owner().global_position), " to ", current_target)
+	print("From ", Constants.tilemap.local_to_map(get_owner().global_position), " to ", current_target)
 
 	path = Constants.astar_grid.get_id_path(
-			tilemap.local_to_map(get_owner().global_position),
-			tilemap.local_to_map(target_position))
+			Constants.tilemap.local_to_map(get_owner().global_position),
+			Constants.tilemap.local_to_map(target_position))
 
 	print(path)
 
@@ -40,12 +39,12 @@ func move_to(target_position: Vector2):
 func _process(_delta):
 	if path.is_empty():
 		if moving:
-			agent_moving.emit(false, is_facing_right)
+			agent_moving.emit(false, is_facing_right) 
 
 		moving = false
 		return
 
-	var next_position = tilemap.map_to_local(path.front())
+	var next_position = Constants.tilemap.map_to_local(path.front())
 
 	get_owner().global_position = get_owner().global_position.move_toward(next_position, 0.5)
 

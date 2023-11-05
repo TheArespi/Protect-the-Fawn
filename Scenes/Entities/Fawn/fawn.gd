@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var tilemap: TileMap
-
 var moving: bool = false
 
 enum FawnStates {
@@ -29,15 +27,16 @@ var current_state: FawnStates = FawnStates.IDLE :
 
 var is_sleeping: bool = false
 var is_woken_up: bool = false
-
+var is_tilemap_initialized: bool = false
 
 func _ready():
 	position = Util.snap_to_grid(position)
-	$PathfindingAgent.tilemap = tilemap
-
-	move_to_random_area()
+	GlobalSignals.tilemap_initialized.connect(initialize_tilemap)
 
 func _process(_delta):
+	if not is_tilemap_initialized:
+		return
+
 	if current_state == FawnStates.IDLE:
 		if $IDLETimer.is_stopped():
 			$IDLETimer.start()
@@ -93,12 +92,12 @@ func _on_pathfinding_agent_agent_moving(is_moving: bool, facing_right: bool):
 		$AnimatedSprite2D.flip_h = true
 
 func move_to_random_area():
-	var tilemap_rect = tilemap.get_used_rect()
+	var tilemap_rect = Constants.tilemap.get_used_rect()
 
-	print("tilemap position: ", tilemap_rect.position, " tilemap size: ", tilemap_rect.size, " tileset tilesize: ", tilemap.tile_set.tile_size)
+	print("tilemap position: ", tilemap_rect.position, " tilemap size: ", tilemap_rect.size, " tileset tilesize: ", Constants.tilemap.tile_set.tile_size)
 
-	var random_x = randi() % int(tilemap_rect.size.x * tilemap.tile_set.tile_size.x) + tilemap_rect.position.x
-	var random_y = randi() % int(tilemap_rect.size.y * tilemap.tile_set.tile_size.y) + tilemap_rect.position.y
+	var random_x = randi() % int(tilemap_rect.size.x * Constants.tilemap.tile_set.tile_size.x) + tilemap_rect.position.x
+	var random_y = randi() % int(tilemap_rect.size.y * Constants.tilemap.tile_set.tile_size.y) + tilemap_rect.position.y
 
 	var new_target = Vector2(random_x, random_y)
 
@@ -123,3 +122,6 @@ func choose_random_state():
 func _on_sleep_timer_timeout():
 	is_woken_up = true
 	print("is_woken_up: ", is_woken_up)
+
+func initialize_tilemap():
+	is_tilemap_initialized = true

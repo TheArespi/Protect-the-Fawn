@@ -9,6 +9,8 @@ var end = Vector2i(5,5)
 
 func _ready():
     initialize_grid()
+    Constants.tilemap = $TileMap
+    GlobalSignals.tilemap_initialized.emit()
 
 func _draw():
     draw_rect(Rect2(start * cell_size, cell_size), Color.GREEN_YELLOW)
