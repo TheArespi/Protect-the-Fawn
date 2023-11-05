@@ -181,9 +181,7 @@ script = ExtResource("1_2ero7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jyj0v")
-animation = &"Fawn_Standing"
-frame = 5
-frame_progress = 1.0
+animation = &"Fawn_IDLE"
 speed_scale = 2.0
 
 [node name="PathfindingAgent" parent="." instance=ExtResource("2_417qe")]
