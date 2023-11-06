@@ -7,6 +7,7 @@ extends Node2D
 
 var monster_list_node: Node
 var current_monster_count: int = 0
+var markers
 
 func _ready():
 	$SpawningTimer.wait_time = monster_frequency
@@ -16,12 +17,20 @@ func _ready():
 
 	add_child(monster_list_node, true)
 
+	markers = markerlist_node.get_children()
+
 func _on_spawning_timer_timeout():
-	print("monster would be spawning now")
-	var new_monster = monster_object.instantiate()
+	if current_monster_count <= monster_limit:
+		print("monster would be spawning now")
+		var new_monster = monster_object.instantiate()
 
-	var markers = markerlist_node.get_children()
-	var random_location = markers[randi() % markers.size()].position
+		var random_location:Vector2 = markers[randi() % markers.size()].position
 
-	new_monster.position = random_location
-	$MonsterList.add_child(new_monster)
+		new_monster.position = random_location
+		$MonsterList.add_child(new_monster)
+		current_monster_count += 1
+	else:
+		print("Monster limit reached")
+
+func monster_died():
+	current_monster_count -= 1

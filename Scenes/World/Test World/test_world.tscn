@@ -67,7 +67,10 @@ monster_object = ExtResource("4_03fnf")
 [node name="Markers" type="Node" parent="MonsterSpawner"]
 
 [node name="Marker2D" type="Marker2D" parent="MonsterSpawner/Markers"]
-position = Vector2(232, 40)
+position = Vector2(327, 82)
 
 [node name="Marker2D2" type="Marker2D" parent="MonsterSpawner/Markers"]
-position = Vector2(232, 152)
+position = Vector2(252, 155)
+
+[node name="Marker2D3" type="Marker2D" parent="MonsterSpawner/Markers"]
+position = Vector2(67, 198)
