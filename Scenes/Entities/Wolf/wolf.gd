@@ -10,6 +10,8 @@ func _ready():
 	
 	GlobalSignals.fawn_location_update.connect(fawn_location_changed)
 
+	$PathfindingAgent.move_to(GlobalSignals.fawn_location)
+
 func _process(_delta):
 	if fawn_moved_while_wolf_not_ready:
 		$PathfindingAgent.move_to(current_fawn_location)

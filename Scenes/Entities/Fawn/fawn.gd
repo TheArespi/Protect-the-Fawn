@@ -32,6 +32,7 @@ var is_tilemap_initialized: bool = false
 func _ready():
 	position = Util.snap_to_grid(position)
 	GlobalSignals.tilemap_initialized.connect(initialize_tilemap)
+	GlobalSignals.fawn_location = global_position
 
 func _process(_delta):
 	if not is_tilemap_initialized:
@@ -77,6 +78,7 @@ func _on_pathfinding_agent_agent_moving(is_moving: bool, facing_right: bool):
 
 	if not is_moving:
 		GlobalSignals.fawn_location_update.emit(global_position)
+		GlobalSignals.fawn_location = global_position
 		choose_random_state()
 
 	moving = is_moving
