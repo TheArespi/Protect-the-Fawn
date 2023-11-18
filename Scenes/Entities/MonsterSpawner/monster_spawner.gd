@@ -23,14 +23,21 @@ func _on_spawning_timer_timeout():
 	if current_monster_count <= monster_limit:
 		print("monster would be spawning now")
 		var new_monster = monster_object.instantiate()
+		
+		var selected_marker_index = randi() % markers.size()
+		var random_location:Vector2 = markers[selected_marker_index].position
 
-		var random_location:Vector2 = markers[randi() % markers.size()].position
+		print("Monster will spawn in ", markers[selected_marker_index].name)
 
 		new_monster.position = random_location
-		$MonsterList.add_child(new_monster)
+
+		call_deferred("add_monster", new_monster);
 		current_monster_count += 1
 	else:
 		print("Monster limit reached")
 
 func monster_died():
 	current_monster_count -= 1
+
+func add_monster(monster_instance):
+	$MonsterList.add_child(monster_instance)

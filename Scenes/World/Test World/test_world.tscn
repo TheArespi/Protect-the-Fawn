@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://41wmgsrovyoc"]
+[gd_scene load_steps=13 format=3 uid="uid://41wmgsrovyoc"]
 
 [ext_resource type="Script" path="res://Scenes/World/Test World/test_world.gd" id="1_hca03"]
 [ext_resource type="Texture2D" uid="uid://td6svgd8oon6" path="res://Sprites/grass-spritesheet.png" id="1_x0yhi"]
 [ext_resource type="PackedScene" uid="uid://nen1dnersocy" path="res://Scenes/Entities/Fawn/fawn.tscn" id="2_qb8fj"]
 [ext_resource type="Texture2D" uid="uid://dittnpvc0ovna" path="res://Sprites/grass-patch-spritesheet.png" id="2_ye0wj"]
 [ext_resource type="PackedScene" uid="uid://6vgv113qh7s5" path="res://Scenes/Entities/Wolf/wolf.tscn" id="4_03fnf"]
-[ext_resource type="Script" path="res://Scenes/World/Test World/CustomCamera.gd" id="6_3e0mi"]
 [ext_resource type="PackedScene" uid="uid://drembpbggpj4e" path="res://Scenes/Entities/MonsterSpawner/monster_spawner.tscn" id="7_qeoqs"]
+[ext_resource type="Script" path="res://Scenes/World/Test World/Cameraman.gd" id="8_ga71k"]
+[ext_resource type="Script" path="res://Scenes/World/Test World/Constants.gd" id="9_2uh6q"]
+[ext_resource type="Texture2D" uid="uid://djiqeb11oy8m8" path="res://Sprites/DungeonEntities.png" id="9_dbigk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wuhbt"]
 texture = ExtResource("1_x0yhi")
@@ -28,8 +30,9 @@ texture = ExtResource("2_ye0wj")
 sources/1 = SubResource("TileSetAtlasSource_wuhbt")
 sources/2 = SubResource("TileSetAtlasSource_soxqn")
 
-[node name="TestWorld" type="Node2D"]
+[node name="TestWorld" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_hca03")
+tilemap = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -48,13 +51,6 @@ layer_1/tile_data = PackedInt32Array(131072, 1, 1, 458752, 65537, 0, 720896, 1, 
 [node name="Fawn" parent="." instance=ExtResource("2_qb8fj")]
 position = Vector2(121, 40)
 
-[node name="CustomCamera" type="Node2D" parent="Fawn" node_paths=PackedStringArray("tilemap")]
-position = Vector2(-121, -40)
-script = ExtResource("6_3e0mi")
-tilemap = NodePath("../../TileMap")
-
-[node name="Camera2D" type="Camera2D" parent="Fawn/CustomCamera"]
-
 [node name="Line2D" type="Line2D" parent="."]
 width = 1.0
 default_color = Color(0, 1, 0, 1)
@@ -67,10 +63,29 @@ monster_object = ExtResource("4_03fnf")
 [node name="Markers" type="Node" parent="MonsterSpawner"]
 
 [node name="Marker2D" type="Marker2D" parent="MonsterSpawner/Markers"]
-position = Vector2(327, 82)
+position = Vector2(825, 24)
 
 [node name="Marker2D2" type="Marker2D" parent="MonsterSpawner/Markers"]
-position = Vector2(252, 155)
+position = Vector2(871, 330)
 
 [node name="Marker2D3" type="Marker2D" parent="MonsterSpawner/Markers"]
-position = Vector2(67, 198)
+position = Vector2(163, 135)
+
+[node name="Cameraman" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("8_ga71k")
+speed = 50
+camera = NodePath("Camera2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cameraman"]
+texture_filter = 1
+position = Vector2(72, 57)
+texture = ExtResource("9_dbigk")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="Camera2D" type="Camera2D" parent="Cameraman"]
+
+[node name="GlobalStuff" type="Node" parent="."]
+
+[node name="Constants" type="Node" parent="GlobalStuff"]
+script = ExtResource("9_2uh6q")

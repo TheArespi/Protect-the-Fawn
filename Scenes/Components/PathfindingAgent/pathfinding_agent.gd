@@ -13,7 +13,7 @@ func _ready():
 	pass
 
 func move_to(target_position: Vector2):
-	if moving:
+	if moving and not Constants.tilemap_initialized:
 		return
 
 	current_target = Constants.tilemap.local_to_map(target_position)
@@ -37,6 +37,9 @@ func move_to(target_position: Vector2):
 	set_agent_moving(current_point)
 
 func _process(_delta):
+	if not Constants.tilemap_initialized:
+		return
+
 	if path.is_empty():
 		if moving:
 			agent_moving.emit(false, is_facing_right) 

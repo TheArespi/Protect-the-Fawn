@@ -27,16 +27,12 @@ var current_state: FawnStates = FawnStates.IDLE :
 
 var is_sleeping: bool = false
 var is_woken_up: bool = false
-var is_tilemap_initialized: bool = false
 
 func _ready():
 	position = Util.snap_to_grid(position)
-	GlobalSignals.tilemap_initialized.connect(initialize_tilemap)
 	GlobalSignals.fawn_location = global_position
 
 func _process(_delta):
-	if not is_tilemap_initialized:
-		return
 
 	if current_state == FawnStates.IDLE:
 		if $IDLETimer.is_stopped():
@@ -44,6 +40,9 @@ func _process(_delta):
 	elif current_state == FawnStates.WANDERING:
 		if not moving:
 			move_to_random_area()
+		else:
+			if not Constants.tilemap_initialized:
+				choose_random_state()
 	elif current_state == FawnStates.SITTING:
 		if $AnimatedSprite2D.animation != "Fawn_Sitting":
 			$AnimatedSprite2D.play("Fawn_Sitting")
@@ -94,6 +93,9 @@ func _on_pathfinding_agent_agent_moving(is_moving: bool, facing_right: bool):
 		$AnimatedSprite2D.flip_h = true
 
 func move_to_random_area():
+	if not Constants.tilemap_initialized:
+		return
+
 	var tilemap_rect = Constants.tilemap.get_used_rect()
 
 	print("tilemap position: ", tilemap_rect.position, " tilemap size: ", tilemap_rect.size, " tileset tilesize: ", Constants.tilemap.tile_set.tile_size)
@@ -124,6 +126,3 @@ func choose_random_state():
 func _on_sleep_timer_timeout():
 	is_woken_up = true
 	print("is_woken_up: ", is_woken_up)
-
-func initialize_tilemap():
-	is_tilemap_initialized = true

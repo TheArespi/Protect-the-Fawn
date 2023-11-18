@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var tilemap: TileMap
 @export var camera_speed: float = 32.0
 
 var is_pressing_mouse: bool = false
@@ -14,8 +13,11 @@ var is_pressing = {
 }
 
 func _ready():
-	var map_limit = tilemap.get_used_rect()
-	var map_cellsize = tilemap.tile_set.tile_size
+	GlobalSignals.tilemap_initialized.connect(tilemap_initialized)
+
+func tilemap_initialized():
+	var map_limit = Constants.tilemap.get_used_rect()
+	var map_cellsize = Constants.tilemap.tile_set.tile_size
 	
 	$Camera2D.limit_left = map_limit.position.x * map_cellsize.x
 	$Camera2D.limit_right = map_limit.end.x * map_cellsize.x
