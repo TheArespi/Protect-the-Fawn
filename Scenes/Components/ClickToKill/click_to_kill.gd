@@ -15,6 +15,7 @@ func _input(event):
     if not is_mouse_hovering:
         return
 
+    GlobalSignals.monster_died.emit()
     get_owner().queue_free()
 
 func mouse_entered():

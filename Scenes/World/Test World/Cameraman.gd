@@ -1,7 +1,8 @@
 extends Node2D
 
-@export var speed:int = 16
+@export var speed: int = 16
 @export var camera: Camera2D
+@export var controllable: bool = false
 
 
 func _ready():
@@ -11,19 +12,22 @@ func _process(delta):
 	if !Constants.tilemap_initialized:
 		return 
 
-	var next_position: Vector2 = position
+	if controllable:
+		var next_position: Vector2
 
-	if Input.is_action_pressed("move_up"):
-		next_position.y -= speed * delta
-	elif Input.is_action_pressed("move_down"):
-		next_position.y += speed * delta
+		next_position = position
 
-	if Input.is_action_pressed("move_right"):
-		next_position.x += speed * delta
-	elif Input.is_action_pressed("move_left"):
-		next_position.x -= speed * delta
+		if Input.is_action_pressed("move_up"):
+			next_position.y -= speed * delta
+		elif Input.is_action_pressed("move_down"):
+			next_position.y += speed * delta
 
-	position = next_position
+		if Input.is_action_pressed("move_right"):
+			next_position.x += speed * delta
+		elif Input.is_action_pressed("move_left"):
+			next_position.x -= speed * delta
+
+		position = next_position
 
 func tilemap_initialized():
 	print(Constants.tilemap)

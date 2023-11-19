@@ -19,6 +19,8 @@ func _ready():
 
 	markers = markerlist_node.get_children()
 
+	GlobalSignals.monster_died.connect(monster_died)
+
 func _on_spawning_timer_timeout():
 	if current_monster_count <= monster_limit:
 		print("monster would be spawning now")
