@@ -65,12 +65,6 @@ monster_object = ExtResource("4_03fnf")
 [node name="Marker2D" type="Marker2D" parent="MonsterSpawner/Markers"]
 position = Vector2(825, 24)
 
-[node name="Marker2D2" type="Marker2D" parent="MonsterSpawner/Markers"]
-position = Vector2(871, 330)
-
-[node name="Marker2D3" type="Marker2D" parent="MonsterSpawner/Markers"]
-position = Vector2(163, 135)
-
 [node name="Cameraman" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("8_ga71k")
 speed = 50

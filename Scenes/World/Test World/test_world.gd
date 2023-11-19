@@ -17,7 +17,10 @@ func _draw():
     draw_rect(Rect2(end * cell_size, cell_size), Color.ORANGE_RED)
 
 func initialize_grid():
-    grid_size = Vector2i(get_viewport_rect().size) / cell_size
+    print("Initializing Grid...")
+    var tilemap_size = tilemap.get_used_rect().size
+    grid_size = Vector2i(tilemap_size)
+    print("Grid Size: ", grid_size)
     Constants.astar_grid.size = grid_size
     Constants.astar_grid.cell_size = cell_size
     Constants.astar_grid.offset = cell_size / 2
