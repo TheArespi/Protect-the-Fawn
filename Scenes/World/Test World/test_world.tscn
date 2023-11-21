@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://41wmgsrovyoc"]
+[gd_scene load_steps=15 format=3 uid="uid://41wmgsrovyoc"]
 
 [ext_resource type="Script" path="res://Scenes/World/Test World/test_world.gd" id="1_hca03"]
 [ext_resource type="Texture2D" uid="uid://td6svgd8oon6" path="res://Sprites/grass-spritesheet.png" id="1_x0yhi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dittnpvc0ovna" path="res://Sprites/grass-patch-spritesheet.png" id="2_ye0wj"]
 [ext_resource type="PackedScene" uid="uid://6vgv113qh7s5" path="res://Scenes/Entities/Wolf/wolf.tscn" id="4_03fnf"]
 [ext_resource type="PackedScene" uid="uid://drembpbggpj4e" path="res://Scenes/Entities/MonsterSpawner/monster_spawner.tscn" id="7_qeoqs"]
+[ext_resource type="Script" path="res://Scenes/World/Test World/timer.gd" id="8_b4cng"]
 [ext_resource type="Script" path="res://Scenes/World/Test World/Cameraman.gd" id="8_ga71k"]
 [ext_resource type="Script" path="res://Scenes/World/Test World/Constants.gd" id="9_2uh6q"]
 
@@ -28,6 +29,11 @@ texture = ExtResource("2_ye0wj")
 [sub_resource type="TileSet" id="TileSet_yygdj"]
 sources/1 = SubResource("TileSetAtlasSource_wuhbt")
 sources/2 = SubResource("TileSetAtlasSource_soxqn")
+
+[sub_resource type="SystemFont" id="SystemFont_t5egy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e3i1v"]
+font = SubResource("SystemFont_t5egy")
 
 [node name="TestWorld" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_hca03")
@@ -81,7 +87,22 @@ position = Vector2(568, 344)
 [node name="Marker2D4" type="Marker2D" parent="MonsterSpawner/Markers"]
 position = Vector2(56, 344)
 
-[node name="GlobalStuff" type="Node" parent="."]
+[node name="GlobalStuff" type="Node" parent="." node_paths=PackedStringArray("time_label")]
+script = ExtResource("8_b4cng")
+time_label = NodePath("../CanvasLayer/Label")
 
 [node name="Constants" type="Node" parent="GlobalStuff"]
 script = ExtResource("9_2uh6q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "00:00"
+label_settings = SubResource("LabelSettings_e3i1v")
+horizontal_alignment = 2
