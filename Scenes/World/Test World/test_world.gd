@@ -2,6 +2,7 @@ extends Node2D
 
 @export var cell_size = Vector2i.ONE * Constants.tile_size
 @export var tilemap: TileMap
+@export var gameover_scene: PackedScene
 
 var grid_size
 
@@ -11,6 +12,7 @@ var end = Vector2i(5,5)
 func _ready():
     initialize_grid()
     Constants.initialize_tilemap(tilemap)
+    GlobalSignals.fawn_died.connect(fawn_died)
 
 func _draw():
     draw_rect(Rect2(start * cell_size, cell_size), Color.GREEN_YELLOW)
@@ -31,3 +33,6 @@ func initialize_grid():
 func update_path():
     $Line2D.points = PackedVector2Array(Constants.astar_grid.get_point_path(start, end))
     
+func fawn_died():
+    print("Game Over")
+    get_tree().change_scene_to_packed(gameover_scene)

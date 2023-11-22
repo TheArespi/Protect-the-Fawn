@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://41wmgsrovyoc"]
+[gd_scene load_steps=16 format=3 uid="uid://41wmgsrovyoc"]
 
 [ext_resource type="Script" path="res://Scenes/World/Test World/test_world.gd" id="1_hca03"]
 [ext_resource type="Texture2D" uid="uid://td6svgd8oon6" path="res://Sprites/grass-spritesheet.png" id="1_x0yhi"]
+[ext_resource type="PackedScene" uid="uid://dio5qpjkkqyhx" path="res://Scenes/World/GameOver/gameOver.tscn" id="2_nwx4p"]
 [ext_resource type="PackedScene" uid="uid://nen1dnersocy" path="res://Scenes/Entities/Fawn/fawn.tscn" id="2_qb8fj"]
 [ext_resource type="Texture2D" uid="uid://dittnpvc0ovna" path="res://Sprites/grass-patch-spritesheet.png" id="2_ye0wj"]
 [ext_resource type="PackedScene" uid="uid://6vgv113qh7s5" path="res://Scenes/Entities/Wolf/wolf.tscn" id="4_03fnf"]
@@ -38,6 +39,7 @@ font = SubResource("SystemFont_t5egy")
 [node name="TestWorld" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_hca03")
 tilemap = NodePath("TileMap")
+gameover_scene = ExtResource("2_nwx4p")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -100,7 +102,8 @@ script = ExtResource("9_2uh6q")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -56.0
+offset_left = -64.0
+offset_right = -8.0
 offset_bottom = 26.0
 grow_horizontal = 0
 text = "00:00"

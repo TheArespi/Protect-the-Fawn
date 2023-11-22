@@ -126,3 +126,6 @@ func choose_random_state():
 func _on_sleep_timer_timeout():
 	is_woken_up = true
 	print("is_woken_up: ", is_woken_up)
+
+func _on_area_2d_area_entered(_area:Area2D):
+	GlobalSignals.fawn_died.emit()
